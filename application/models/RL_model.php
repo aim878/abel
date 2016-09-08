@@ -116,13 +116,14 @@
 		public function get_software_order_data()
 		{
 			$get_data = $this->db->query(
-				"SELECT user_name, software_name, software_language, software_price, purchase_date FROM purchase
-				INNER JOIN software
-				ON purchase.software_id_or_cd_id=software.software_id
-				INNER JOIN user
-				ON purchase.user_id=user.user_id
-				WHERE user_status = '1' AND purchase_type = '1' ")->result();
-			//print_r($get_data); exit;
+			   "SELECT user_name, software_name, software_language, software_price, purchase_date
+				FROM purchase INNER JOIN software
+					ON purchase.software_id_or_cd_id=software.software_id
+							  INNER JOIN user
+					ON purchase.user_id=user.user_id
+				WHERE user_status = '1' AND purchase_type = '1' 
+			   ")->result();
+			
 			return $get_data;
 		}
 	

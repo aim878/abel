@@ -51,9 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'RL_Controller';
 
-// $route['site'] = 'MainController';
-// $route['site/(:any)'] = 'MainController/$1';
-// $route['site/(:any)/(:any)'] = 'MainController/$1/$2';
+$route['user'] = 'User_Rl_Controller';
+$route['user/(:any)'] = 'User_Rl_Controller/$1';
+$route['user/(:any)/(:any)'] = 'User_Rl_Controller/$1/$2';
 
 $route['(:any)'] = 'RL_Controller/$1';
 $route['(:any)/(:any)'] = 'RL_Controller/$1/$2';

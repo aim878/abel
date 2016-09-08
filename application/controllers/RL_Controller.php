@@ -46,17 +46,8 @@
 		/********************************/
 		public function index()
 		{
-			$slider_raw_data  = $this->RL_model->get_slider_data();
-			$contact_raw_data = $this->RL_model->get_contact_info_data();
-			$service_raw_data = $this->RL_model->get_services_data();
-			$choose_us_data   = $this->RL_model->get_choose_us_data();
 			
-			$this->load->view('frontend/index', array(
-				'slider_raw' => $slider_raw_data,
-				'contact_info' => $contact_raw_data,
-				'service_data' => $service_raw_data,
-				'choose_us_data' => $choose_us_data
-			));
+			 $this->load->view('frontend/index');
 		
 		}
  
@@ -65,16 +56,7 @@
 			if($this->RL_model->is_user_logged_in())
 			{
 
-				// $image_count = $this->RL_model->images_count();
-				// $services_count = $this->RL_model->services_count();
-				// $contacts_count = $this->RL_model->contacts_count();
-				$this->load->view('backend/dash_board' 
-					// array(
-					// 	'image_count' => $image_count,
-					// 	'services_count' => $services_count,
-					// 	'contacts_count' => $contacts_count 
-					// )
-					);
+				$this->load->view('backend/dash_board');
 			}
 			else
 			{
