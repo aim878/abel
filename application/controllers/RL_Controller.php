@@ -46,8 +46,8 @@
 		/********************************/
 		public function index()
 		{
-			
-			 $this->load->view('frontend/index');
+
+			$this->load->view('frontend/index');
 		
 		}
  
@@ -56,7 +56,8 @@
 			if($this->RL_model->is_user_logged_in())
 			{
 
-				$this->load->view('backend/dash_board');
+				$user_count = $this->RL_model->get_user_count();
+				$this->load->view('backend/dash_board', array('user_count' => $user_count));
 			}
 			else
 			{
@@ -197,16 +198,38 @@
         }
 
 
-		/////////////////////////////////
-		///	   Data Tables Segments   ///
-		/////////////////////////////////
+		//////////////////////////////////
+		///	   Data Tables Segments   ////
+		//////////////////////////////////
+		/********************************/
+		/*    Get All software Orders   */
+		/********************************/
 
 		public  function get_software_order()
 		{
 			$software_order= $this->RL_model->get_software_order_data();
 			$this->load->view('backend/software_order', array('oftware_order' => $software_order));
 		}
+
+
+		/********************************/
+		/*      Get All User Details    */
+		/********************************/
+		public  function get_user_details()
+		{
+			$user_detail = $this->RL_model->get_user_details();
+			$this->load->view('backend/register_user', array('users' => $user_detail));
+		}
 		
+
+		/********************************/
+		/*      Get All User Details    */
+		/********************************/
+		public  function get_cd_order()
+		{
+			$cd_order = $this->RL_model->get_cd_order_data();
+			$this->load->view('backend/cd_order', array('cd_order' => $cd_order));
+		}
 	
 }
 

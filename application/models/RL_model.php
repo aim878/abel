@@ -112,7 +112,9 @@
 
 		}
 
-
+		/********************************/
+		/*  All Sofatare Order Detail   */
+		/********************************/
 		public function get_software_order_data()
 		{
 			$get_data = $this->db->query(
@@ -126,6 +128,47 @@
 			
 			return $get_data;
 		}
-	
+
+		/********************************/
+		/*   All Compact Order Detail   */
+		/********************************/
+		public function get_cd_order_data()
+		{
+			$get_data = $this->db->query(
+			   "SELECT user_name, cd_name, cd_language, cd_price, purchase_date
+				FROM purchase INNER JOIN cd
+					ON purchase.software_id_or_cd_id=cd.cd_id
+							  INNER JOIN user
+					ON purchase.user_id=user.user_id
+				WHERE user_status = '1' AND purchase_type = '0' 
+			   ")->result();
+			
+			return $get_data; exit;
+		}
+
+		/********************************/
+		/*     All User Data Detail     */
+		/********************************/
+		public function get_user_details()
+		{
+
+			$get_data = $this->db->query(
+			   "SELECT * FROM user")->result();
+			
+			return $get_data;
+
+
+		}
+		
+		/********************************/
+		/*      Image Count in db       */
+		/********************************/
+		public function get_user_count()
+		{
+			$user_count = $this->db->query("SELECT * FROM user")->num_rows();
+			return $user_count;
+		}
+
+		
 	}
 	

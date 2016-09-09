@@ -141,14 +141,14 @@ $(document).ready( function() {
       <div class="banner-login">
         <div class="login-main-banner">
           <h3 class="text-center">Login</h3>
-          <form method="post" action="" class="banner-login-form">
+          <form method="post" action="<?php echo base_url(); ?>user/post_login" class="banner-login-form">
             <input type="email" name="email" placeholder="E-mail" required>
             <div class="clearfix"></div>
             <input type="password" name="Password" placeholder="********" required>
             <div class="clearfix"></div>
             <input type="submit" class="banner-login-btn" value="Login Now">
             <div class="clearfix"></div>
-            <a href="javascript:;" class="pull-left banner-forgot-password">Forgot Password?</a> <a href="register.php" class="pull-right banner-new-user">New User?</a>
+            <a href="javascript:;" class="pull-left banner-forgot-password">Forgot Password?</a> <a href="<?php echo base_url(); ?>user/get_register" class="pull-right banner-new-user">New User?</a>
             <div class="clearfix"></div>
           </form>
         </div>

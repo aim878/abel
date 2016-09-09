@@ -46,7 +46,7 @@
 								</div>
 								<div class="details">
 									<div class="number">
-										90
+										<?php echo $user_count ?>
 									</div>
 									<div class="desc">									
 										User Registered

@@ -76,7 +76,12 @@ $(document).ready( function() {
   <div class="main-agileits">
     <div class="form-w3agile">
       <h3>Login</h3>
-      <form action="" method="post">
+      <?php if (!empty($_POST)){ ?>
+        <div class="alert alert-danger">
+            <strong>!</strong> Wrong Email Or Password
+        </div>
+      <?php } ?>
+      <form action="<?php echo base_url(); ?>user/post_login" method="post">
         <div class="key"> <i class="fa fa-envelope" aria-hidden="true"></i>
           <input type="email" name="email" placeholder="E-mail" required>
           <div class="clearfix"></div>

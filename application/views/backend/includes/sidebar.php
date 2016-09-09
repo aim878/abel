@@ -60,11 +60,11 @@
 
 				<li class="start">
 
-					<a href="#">
+					<a href="<?php echo base_url(); ?>get_user_details">
 
 					<i class="icon-bookmark-empty"></i> 
 
-					<span class="title">Slider</span>
+					<span class="title">register user
 
 					<span class="selected"></span>
 
@@ -72,33 +72,34 @@
 
 				</li>
 
-				
+				<li class="start">
 
-				<!--
+					<a href="<?php echo base_url(); ?>get_cd_order">
 
-				<li class="has-sub ">
+					<i class="icon-bookmark-empty"></i> 
 
-					<a href="javascript:;">
+					<span class="title">cd Order's
 
-					<i class="icon-table"></i> 
-
-					<span class="title">Forms</span>
-
-					<span class="arrow "></span>
+					<span class="selected"></span>
 
 					</a>
 
-					<ul class="sub">
+				</li>
 
-						<li ><a href="<?php echo base_url(); ?>usr_profile">Slider</a></li>
 
-						<li ><a href="<?php echo base_url(); ?>get_services_view">Services</a></li>
+				<li class="start">
 
-						<li ><a href="<?php echo base_url(); ?>get_contact_info_view">Contact_info</a></li>
+					<a href="<?php echo base_url(); ?>get_software_order">
 
-					</ul>
+					<i class="icon-bookmark-empty"></i> 
 
-				</li>-->
+					<span class="title">Software Order's
+
+					<span class="selected"></span>
+
+					</a>
+
+				</li>
 
 			</ul>
 

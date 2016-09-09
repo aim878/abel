@@ -48,11 +48,20 @@
 		/*************************************/
 		/* User_RL_controller's entry Point  */
 		/*************************************/
-		public function get_login()
+		public function login()
 		{
+			if($this->User_Rl_model->is_user_logged_in())
+			{
+
+				echo "valid login";
+				//$this->load->view('frontend/dash_board');
+			}
+			else
+			{
+				$this->load->view('frontend/login');
 			
-			$this->load->view('frontend/login');
-		
+			}
+			
 		}
 
 		/*************************************/
@@ -136,6 +145,81 @@
 
 		   return True;
 		}
+
+		/////////////////////////////////
+		///		User Login Segment 	  ///
+		/////////////////////////////////
+		public function post_login()
+		{
+			/********************************/
+			/*   Difining Validation Rules  */
+			/********************************/
+			$config = array(
+					array(
+							'field'  => 'email'
+							,'label' => 'email'
+							,'rules' => 'trim|required'
+					),
+					array(
+							'field'  => 'Password'
+							,'label' => 'Password'
+							,'rules' => 'trim|required'
+					)
+			);
+			
+			$this->form_validation->set_rules($config);
+			
+			/********************************/
+			/*    Form Validation Check     */
+			/********************************/		
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->load->view('backend/login');
+			}
+            else{
+                $usr_data = array(
+                    'usr_email' => $this->input->post('email'),
+                    'usr_pass' => $this->input->post('Password')
+                );
+                $usr_data['usr_email'];
+                
+                $recordCheck = $this->User_Rl_model->post_login($usr_data);
+                
+                if($recordCheck){
+                    
+                    /*******************************/
+                    /*Defining a session array data*/ 
+                    /*******************************/
+                    $sess_data = array(
+                        'usr_email' => $usr_data['usr_email'],
+                        'logged_in' => TRUE
+                    );
+                    $this->session->set_userdata($sess_data);
+                    //$this->login();
+                    redirect('user/login');
+                }
+                else
+                {
+                    $this->login();
+                    //echo "wrong choice"; exit;
+                }
+            }
+		
+		}
+
+		public function logout()
+		{
+			$array_items = array(
+				'usr_email' => '',
+				'usr_pass' => '',
+				'logged_in' => FALSE
+			);
+			$this->session->unset_userdata($array_items);
+			$this->session->sess_destroy();
+			echo "logout"; exit;
+			redirect('admin');
+		}
+
 
 	}
 
