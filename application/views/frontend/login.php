@@ -106,7 +106,7 @@ $(document).ready( function() {
   <div class="main-agileits">
     <div class="form-w3agile">
       <h3>Forgot Password</h3>
-      <form action="" method="post">
+      <form <form action="<?php echo base_url(); ?>user/post_Forget_password" method="post">
         <div class="key"> <i class="fa fa-envelope" aria-hidden="true"></i>
           <input type="email" name="email" placeholder="E-mail" required>
           <div class="clearfix"></div>

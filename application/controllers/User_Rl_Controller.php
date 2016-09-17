@@ -24,7 +24,7 @@
 			$this->form_validation->set_error_delimiters(' <div class="alert alert-error "><button class="close" data-dismiss="alert"></button><span></span>', '</div>');
 
 			$this->no_cache();
-			$this->load->helper(array('form', 'url', 'security'));
+			$this->load->helper(array('form', 'url', 'security', 'string'));
 			
 		}
 
@@ -174,6 +174,7 @@
 			/********************************/		
 			if($this->form_validation->run() == FALSE)
 			{
+				echo "what is this"; exit;
 				$this->load->view('backend/login');
 			}
             else{
@@ -183,7 +184,7 @@
                 );
                 $usr_data['usr_email'];
                 
-                $recordCheck = $this->User_Rl_model->post_login($usr_data);
+                echo $recordCheck = $this->User_Rl_model->post_login($usr_data);
                 
                 if($recordCheck){
                     
@@ -195,11 +196,12 @@
                         'logged_in' => TRUE
                     );
                     $this->session->set_userdata($sess_data);
-                    //$this->login();
-                    redirect('user/login');
+                    $this->login();
+                    //redirect('user/login');
                 }
                 else
                 {
+                	echo "but why"; exit;
                     $this->login();
                     //echo "wrong choice"; exit;
                 }
@@ -218,6 +220,26 @@
 			$this->session->sess_destroy();
 			echo "logout"; exit;
 			redirect('admin');
+		}
+
+		public function post_Forget_password()
+		{
+
+			$this->form_validation->set_rules('email', 'Email', 'required|callback_email_exists');
+			if($this->form_validation->run() == FALSE){
+				echo "form validation is not run";
+			}
+			else
+			{
+				$email = $this->input->post('email');
+				
+			} 
+
+		}
+
+		public function email_exists($email)
+		{
+			return $this->User_Rl_model->is_email_exits($email);
 		}
 
 
